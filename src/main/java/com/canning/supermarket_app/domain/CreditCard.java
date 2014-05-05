@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,25 +25,92 @@ public class CreditCard implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private long card_number;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date expiry_date;
+    private String card_number;
+    private String expiry_date;
     
     private String name_on_card;
+    
+    @ManyToOne
+    private Customer customer;
 
-    public long getCard_number() {
+    public CreditCard() {
+    }
+    
+    private CreditCard(Builder builder) {
+        id= builder.id;
+        card_number = builder.card_number;
+        expiry_date = builder.expiry_date;
+        name_on_card = builder.name_on_card;
+       }
+    
+    public static class Builder {
+        private Long id;
+        private String card_number;
+        private String expiry_date;
+        private String name_on_card;
+        private Customer customer;
+        
+        public Builder id(Long value) {
+            id = value;
+            return this;
+        }
+        
+        public Builder card_number(String value) {
+            card_number = value;
+            return this;
+        }
+        
+        public Builder expiry_date(String value){
+            expiry_date = value;
+            return this;
+        }
+        
+        public Builder name_on_card(String value){
+            name_on_card = value;
+            return this;
+        }
+        
+        public Builder customer(Customer value){
+            customer = value;
+            return this;
+        }
+        
+        public Builder CreditCard(CreditCard creditCard){
+            id = creditCard.getId();
+            card_number = creditCard.getCard_number();
+            expiry_date = creditCard.getExpiry_date();
+            name_on_card = creditCard.getName_on_card();
+            customer = creditCard.getCustomer();
+            
+            return this;
+        }
+        
+            public CreditCard build(){
+            return new CreditCard(this);
+        }
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public String getCard_number() {
         return card_number;
     }
 
-    public void setCard_number(long card_number) {
+    public void setCard_number(String card_number) {
         this.card_number = card_number;
     }
 
-    public Date getExpiry_date() {
+    public String getExpiry_date() {
         return expiry_date;
     }
 
-    public void setExpiry_date(Date expiry_date) {
+    public void setExpiry_date(String expiry_date) {
         this.expiry_date = expiry_date;
     }
 

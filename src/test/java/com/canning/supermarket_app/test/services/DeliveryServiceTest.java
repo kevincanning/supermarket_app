@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 
-package com.canning.supermarket_app.test.repository;
+package com.canning.supermarket_app.test.services;
 
 import com.canning.supermarket_app.conf.ConnectionConfig;
-import com.canning.supermarket_app.domain.Delivery;
-import com.canning.supermarket_app.domain.Invoice;
+import com.canning.supermarket_app.domain.Customer;
+import com.canning.supermarket_app.repository.CustomerRepository;
 import com.canning.supermarket_app.repository.DeliveryRepository;
-import com.canning.supermarket_app.repository.InvoiceRepository;
+import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -21,36 +22,30 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Kevin Canning
+ * @author Kevin
  */
-public class InvoiceRepositoryTest {
-     public static ApplicationContext ctx;
-    private Long id;
-
-    private InvoiceRepository invoiceRepository;
-    
-    public InvoiceRepositoryTest() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void read() {
-         invoiceRepository = ctx.getBean(InvoiceRepository.class);
-         Invoice invoice = new Invoice();
-         invoice.getInvoice_date();
-         invoiceRepository.save(invoice);     
+public class DeliveryServiceTest {
+     private static ApplicationContext ctx;
+     private DeliveryRepository deliveryRepository;
+     
+     public DeliveryServiceTest(){
+         
      }
+      @Test
+    public void getAllDeliveries() {
+        deliveryRepository = ctx.getBean(DeliveryRepository.class);
+        
+    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
-		
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        
     }
 
     @BeforeMethod
@@ -59,5 +54,6 @@ public class InvoiceRepositoryTest {
 
     @AfterMethod
     public void tearDownMethod() throws Exception {
+       deliveryRepository = ctx.getBean(DeliveryRepository.class);
     }
 }

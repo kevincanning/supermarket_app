@@ -8,17 +8,21 @@ package com.canning.supermarket_app.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Kevin Canning
  */
+@Transactional("MANDATORY")
 @Entity
 public class Orders implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -27,11 +31,72 @@ public class Orders implements Serializable {
     private Long id;
     
     private String order_number;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date order_date;
+    private String order_date;
+    
+    @ManyToOne
+    private Customer customer;
     
     @OneToOne
     private Invoice invoice;
+
+    public Orders() {
+    }
+    
+    private Orders(Builder builder) {
+        id= builder.id;
+        order_number = builder.order_number;
+       }
+    
+    public static class Builder {
+        private Long id;
+        private String order_number;
+        private String order_date;
+        private Invoice invoice;
+        private Customer customer;
+        
+        public Builder id(Long value) {
+            id = value;
+            return this;
+        }
+        
+        public Builder order_number(String value) {
+            order_number = value;
+            return this;
+        }
+        
+        public Builder order_date(String value){
+            order_date = value;
+            return this;
+        }
+        
+         public Builder invoice(Invoice value){
+            invoice = value;
+            return this;
+        }
+         
+        public Builder customer(Customer value){
+            customer = value;
+            return this;
+        }
+        
+        public Builder Orders(Orders orders){
+            id = orders.getId();
+            order_number = orders.getOrder_number();
+            order_date = orders.getOrder_date();
+            invoice = orders.getInvoice();
+            customer = orders.getCustomer();
+            
+            return this;
+        }
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public String getOrder_number() {
         return order_number;
@@ -41,11 +106,11 @@ public class Orders implements Serializable {
         this.order_number = order_number;
     }
 
-    public Date getOrder_date() {
+    public String getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(Date order_date) {
+    public void setOrder_date(String order_date) {
         this.order_date = order_date;
     }
 

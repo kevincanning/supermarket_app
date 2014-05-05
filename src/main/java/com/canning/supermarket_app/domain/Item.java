@@ -32,17 +32,6 @@ public class Item implements Serializable {
     
     @ManyToOne
     private Orders orders;
-
-    @OneToOne
-    private Catergory catergory;
-
-    public Catergory getCatergory() {
-        return catergory;
-    }
-
-    public void setCatergory(Catergory catergory) {
-        this.catergory = catergory;
-    }
     
     public long getQuantity() {
         return quantity;

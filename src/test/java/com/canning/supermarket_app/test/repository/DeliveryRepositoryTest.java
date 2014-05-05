@@ -25,7 +25,7 @@ public class DeliveryRepositoryTest {
     public static ApplicationContext ctx;
     private Long id;
 
-    private DeliveryRepository deliveryRepo;
+    private DeliveryRepository deliveryRepository;
     
     public DeliveryRepositoryTest() {
     }
@@ -35,14 +35,16 @@ public class DeliveryRepositoryTest {
     //
      @Test
      public void hello() {
-         deliveryRepo = ctx.getBean(DeliveryRepository.class);
+         deliveryRepository = ctx.getBean(DeliveryRepository.class);
          Delivery delivery = new Delivery();
-         delivery.setDelivery_needed("Yes");
-         System.out.println(delivery); //change for Delivery
+        
+         deliveryRepository.save(delivery);     
      }
-     @BeforeClass
+
+    @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+		
     }
 
     @AfterClass

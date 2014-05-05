@@ -11,6 +11,7 @@ import com.canning.supermarket_app.domain.Customer;
 import com.canning.supermarket_app.repository.CustomerRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -33,16 +34,17 @@ public class CustomerRepositoryTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void hello() {
-        /* custRepo = ctx.getBean(CustomerRepository.class);
-         Customer cust = new Customer();
-         cust.setName(null);
-         custRepo.save(cust);*/
+  @Test
+     public void createCustomer() {
+          custRepo = ctx.getBean(CustomerRepository.class);
+          Customer customer = new Customer.Builder().customer_Number(null).build();
+                   
      }
-     @BeforeClass
+
+    @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+		
     }
 
     @AfterClass

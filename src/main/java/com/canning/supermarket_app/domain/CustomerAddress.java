@@ -8,6 +8,7 @@ package com.canning.supermarket_app.domain;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -17,6 +18,17 @@ import javax.persistence.Embeddable;
 public class CustomerAddress implements Serializable{
     private String street_address;
     private String postal_address;
+    
+    @OneToOne
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public String getStreet_address() {
         return street_address;
