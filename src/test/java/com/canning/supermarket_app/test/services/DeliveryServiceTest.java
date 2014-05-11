@@ -6,7 +6,7 @@
 
 package com.canning.supermarket_app.test.services;
 
-import com.canning.supermarket_app.conf.ConnectionConfig;
+import com.canning.supermarket_app.app.conf.ConnectionConfig;
 import com.canning.supermarket_app.domain.Customer;
 import com.canning.supermarket_app.repository.CustomerRepository;
 import com.canning.supermarket_app.repository.DeliveryRepository;

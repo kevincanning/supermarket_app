@@ -13,14 +13,14 @@ import java.util.List;
  * @author Kevin Canning
  */
 public interface OrderService <O, ID>  {
-    public O find(ID id);
+    public O findAOrder(ID id);
 
     public O persist(O entity);
 
     public O merge(O entity);
 
     public void remove(O entity);
-
-    public List<O> findAll();
+    
+    public List<O> getAllOders();
     
 }

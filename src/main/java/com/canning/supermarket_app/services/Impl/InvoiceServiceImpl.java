@@ -6,11 +6,8 @@
 
 package com.canning.supermarket_app.services.Impl;
 
-import com.canning.supermarket_app.domain.Invoice;
-import com.canning.supermarket_app.repository.InvoiceRepository;
 import com.canning.supermarket_app.services.InvoiceService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,30 +16,28 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
-    @Autowired
-    private InvoiceRepository invoiceRepository;
- 
-    public List<Invoice> getAllInvoices() {
-        return invoiceRepository.findAll();
+
+    @Override
+    public Object findAInvoice(Object id) {
+        return null;
     }
 
-    public Object find(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    @Override
     public Object persist(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
+    @Override
     public Object merge(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
+    @Override
     public void remove(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public List getAllInvoices() {
+       return null;
     }
 }

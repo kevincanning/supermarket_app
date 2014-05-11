@@ -13,13 +13,14 @@ import java.util.List;
  * @author Kevin Canning
  */
 public interface InvoiceService<I, ID>  {
-    public I find(ID id);
+     
+    public I findAInvoice(ID id);
 
     public I persist(I entity);
 
     public I merge(I entity);
 
     public void remove(I entity);
-
-    public List<I> findAll();
+    
+    public List<I> getAllInvoices();
 }

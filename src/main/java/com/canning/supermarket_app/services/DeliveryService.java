@@ -13,13 +13,12 @@ import java.util.List;
  * @author Kevin Canning
  */
 public interface DeliveryService<D, ID>  {
-    public D find(ID id);
+    public D findADelivery(ID id);
 
     public D persist(D entity);
 
     public D merge(D entity);
 
     public void remove(D entity);
-
-    public List<D> findAll();
+    public List<D> getAllDeliveries();
 }

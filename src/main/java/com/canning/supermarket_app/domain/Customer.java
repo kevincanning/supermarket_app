@@ -7,7 +7,6 @@
 package com.canning.supermarket_app.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
@@ -130,48 +129,24 @@ public class Customer implements Serializable {
         return customer_number;
     }
 
-    public void setCustomer_number(String customer_number) {
-        this.customer_number = customer_number;
-    }
-
     public Name getName() {
         return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
     }
 
     public ContactDetails getContactDetails() {
         return contactDetails;
     }
-
-    public void setContactDetails(ContactDetails contactDetails) {
-        this.contactDetails = contactDetails;
-    }
-
+    
     public CustomerAddress getCustomerAddress() {
         return customerAddress;
-    }
-
-    public void setCustomerAddress(CustomerAddress customerAddress) {
-        this.customerAddress = customerAddress;
     }
 
     public List<CreditCard> getCreditCard() {
         return creditCard;
     }
 
-    public void setCreditCard(List<CreditCard> creditCard) {
-        this.creditCard = creditCard;
-    }
-
     public List<Orders> getOrder() {
         return order;
-    }
-
-    public void setOrder(List<Orders> order) {
-        this.order = order;
     }
 
     public Long getId() {

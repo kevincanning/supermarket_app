@@ -13,13 +13,13 @@ import java.util.List;
  * @author Kevin Canning
  */
 public interface ItemService<I, ID>  {
-    public I find(ID id);
+     public I findAItem(ID id);
 
     public I persist(I entity);
 
     public I merge(I entity);
 
     public void remove(I entity);
-
-    public List<I> findAll();
+    
+    public List<I> getAllItems();
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.canning.supermarket_app.conf;
+package com.canning.supermarket_app.app.conf;
 
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;

@@ -6,11 +6,8 @@
 
 package com.canning.supermarket_app.services.Impl;
 
-import com.canning.supermarket_app.domain.Delivery;
-import com.canning.supermarket_app.repository.DeliveryRepository;
 import com.canning.supermarket_app.services.DeliveryService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,30 +16,28 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
-    @Autowired
-    private DeliveryRepository deliveryRepository;
  
-    public List<Delivery> getAllDeliveries() {
-        return deliveryRepository.findAll();
+    @Override
+    public Object findADelivery(Object id) {
+       return null;
     }
 
-    public Object find(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    @Override
     public Object persist(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
+    @Override
     public Object merge(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return null;
     }
 
+    @Override
     public void remove(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public List getAllDeliveries() {
+        return null;
     }
 }

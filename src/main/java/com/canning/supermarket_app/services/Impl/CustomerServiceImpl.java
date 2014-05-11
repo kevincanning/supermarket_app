@@ -6,11 +6,8 @@
 
 package com.canning.supermarket_app.services.Impl;
 
-import com.canning.supermarket_app.domain.Customer;
-import com.canning.supermarket_app.repository.CustomerRepository;
 import com.canning.supermarket_app.services.CustomerService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,30 +16,28 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CustomerServiceImpl implements CustomerService {
-    @Autowired
-    private CustomerRepository customerRepository;
- 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+   
+    @Override
+    public List getAllCustomers() {
+        return null;
     }
 
-    public Object find(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public Object findCustomer(Object id) {
+       return null;
     }
 
+    @Override
     public Object persist(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
+    @Override
     public Object merge(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
-    public void remove(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public void remove(Object entity) {        
     }
 }

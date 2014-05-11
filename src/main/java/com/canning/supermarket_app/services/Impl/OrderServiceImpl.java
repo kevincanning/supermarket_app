@@ -17,30 +17,28 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Kevin Canning
  */
 public class OrderServiceImpl implements OrderService {
-    @Autowired
-    private OrderRepository orderRepository;
- 
-    public List<Orders> getAllOrders() {
-        return orderRepository.findAll();
+
+    @Override
+    public Object findAOrder(Object id) {
+        return null;
     }
 
-    public Object find(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    @Override
     public Object persist(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
+    @Override
     public Object merge(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
+    @Override
     public void remove(Object entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public List getAllOders() {
+        return null;
     }
 }

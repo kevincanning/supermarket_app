@@ -13,13 +13,13 @@ import java.util.List;
  * @author Kevin Canning
  */
 public interface CustomerService<C, ID>  {
-    public C find(ID id);
+    
+    public C findCustomer(ID id);
 
     public C persist(C entity);
 
     public C merge(C entity);
 
     public void remove(C entity);
-
-    public List<C> findAll();
+    public List<C> getAllCustomers();
 }
