@@ -8,7 +8,6 @@
     <class>com.canning.supermarket_app.domain.Invoice</class>
     <class>com.canning.supermarket_app.domain.Item</class>
     <class>com.canning.supermarket_app.domain.Orders</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/supermarket"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

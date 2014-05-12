@@ -89,32 +89,16 @@ public class Orders implements Serializable {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public String getOrder_number() {
         return order_number;
-    }
-
-    public void setOrder_number(String order_number) {
-        this.order_number = order_number;
     }
 
     public String getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(String order_date) {
-        this.order_date = order_date;
-    }
-
     public Invoice getInvoice() {
         return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
     }
 
     public Long getId() {
