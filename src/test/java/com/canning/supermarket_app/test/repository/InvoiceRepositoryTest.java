@@ -7,9 +7,7 @@
 package com.canning.supermarket_app.test.repository;
 
 import com.canning.supermarket_app.app.conf.ConnectionConfig;
-import com.canning.supermarket_app.domain.Delivery;
 import com.canning.supermarket_app.domain.Invoice;
-import com.canning.supermarket_app.repository.DeliveryRepository;
 import com.canning.supermarket_app.repository.InvoiceRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -24,7 +22,7 @@ import org.testng.annotations.Test;
  * @author Kevin Canning
  */
 public class InvoiceRepositoryTest {
-     public static ApplicationContext ctx;
+    public static ApplicationContext ctx;
     private Long id;
 
     private InvoiceRepository invoiceRepository;
@@ -35,17 +33,18 @@ public class InvoiceRepositoryTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void read() {
+    @Test
+    public void invoiceTest() {
          invoiceRepository = ctx.getBean(InvoiceRepository.class);
          Invoice invoice = new Invoice();
          invoice.getInvoice_date();
-         invoiceRepository.save(invoice);     
+         invoice.getTotal();
+         invoiceRepository.save(invoice);          
      }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
 		
     }
 

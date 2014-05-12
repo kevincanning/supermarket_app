@@ -7,22 +7,17 @@
 package com.canning.supermarket_app.domain;
 
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Kevin Canning
  */
-@Transactional("MANDATORY")
 @Entity
 public class Orders implements Serializable {
     private static final long serialVersionUID = 1L;

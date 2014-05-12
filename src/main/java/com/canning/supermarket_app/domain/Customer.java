@@ -16,12 +16,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import org.springframework.transaction.annotation.Transactional;
 /**
  *
  * @author Kevin Canning
  */
-@Transactional("REQUIRED")
 @Entity
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;

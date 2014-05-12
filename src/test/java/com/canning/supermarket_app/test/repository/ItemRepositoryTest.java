@@ -7,8 +7,8 @@
 package com.canning.supermarket_app.test.repository;
 
 import com.canning.supermarket_app.app.conf.ConnectionConfig;
-import com.canning.supermarket_app.domain.Delivery;
-import com.canning.supermarket_app.repository.DeliveryRepository;
+import com.canning.supermarket_app.domain.Item;
+import com.canning.supermarket_app.repository.ItemRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.annotations.AfterClass;
@@ -19,34 +19,33 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Kevin Canning
+ * @author Kevin
  */
-public class DeliveryRepositoryTest {
+public class ItemRepositoryTest {
     public static ApplicationContext ctx;
     private Long id;
 
-    private DeliveryRepository deliveryRepository;
+    private ItemRepository itemRepository;
     
-    public DeliveryRepositoryTest() {
+    public ItemRepositoryTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void deliveryTest() {
-         deliveryRepository = ctx.getBean(DeliveryRepository.class);
-         Delivery delivery = new Delivery();
-         delivery.getDelivery_needed();
-         delivery.getStreet_address();
-         delivery.getContact_number();
-         deliveryRepository.save(delivery);   
+    public void itemTest() {
+         itemRepository = ctx.getBean(ItemRepository.class);
+         Item item = new Item();
+         item.getQuantity();
+         item.getPrice();
+         item.getAmount_in_stock();
+         itemRepository.save(item);          
      }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
-		
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);	
     }
 
     @AfterClass

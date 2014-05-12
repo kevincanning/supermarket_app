@@ -6,11 +6,8 @@
 
 package com.canning.supermarket_app.services.Impl;
 
-import com.canning.supermarket_app.domain.Item;
-import com.canning.supermarket_app.repository.ItemRepository;
 import com.canning.supermarket_app.services.ItemService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
