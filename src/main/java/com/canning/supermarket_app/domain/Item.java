@@ -32,52 +32,77 @@ public class Item implements Serializable {
     @ManyToOne
     private Orders orders;
     
+    private Item(Builder builder){
+        id = builder.id;
+        price = builder.price;
+        code = builder.code;
+        amount_in_stock = builder.amount_in_stock;
+        orders = builder.orders;
+    }
+    
+    public Item(){
+    }
+    
+    public static class Builder {
+        private Long id;
+        private long price;
+        private String code;
+        private long amount_in_stock;
+        private Orders orders;
+          
+        public Builder id(Long value){
+            id = value;
+            return this;
+        }
+        
+        public Builder price(long value){
+            price = value;
+            return this;
+        }
+        
+        public Builder code(String value){
+            code = value;
+            return this;
+        }
+        
+        public Builder amount_in_stock(long value){
+            amount_in_stock = value;
+            return this;
+        }
+        
+        public Builder orders(String order_number, String order_date){
+            order_number = orders.getOrder_number();
+            order_date = orders.getOrder_date();
+            return this;
+        }
+        
+        public Item build(Item item){
+            return new Item(this);
+        }
+    }
+    
     public long getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
     }
 
     public long getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
     public String getCode() {
         return code;
     }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
+    
     public long getAmount_in_stock() {
         return amount_in_stock;
-    }
-
-    public void setAmount_in_stock(long amount_in_stock) {
-        this.amount_in_stock = amount_in_stock;
     }
 
     public Orders getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

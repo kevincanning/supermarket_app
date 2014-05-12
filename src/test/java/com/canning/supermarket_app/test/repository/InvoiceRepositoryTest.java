@@ -36,9 +36,7 @@ public class InvoiceRepositoryTest {
     @Test
     public void invoiceTest() {
          invoiceRepository = ctx.getBean(InvoiceRepository.class);
-         Invoice invoice = new Invoice();
-         invoice.getInvoice_date();
-         invoice.getTotal();
+         Invoice invoice = new Invoice.Builder().invoice_date(null).total(0).build();
          invoiceRepository.save(invoice);          
      }
 

@@ -8,8 +8,6 @@ package com.canning.supermarket_app.domain;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
-import javax.persistence.OneToOne;
-
 /**
  *
  * @author Kevin Canning
@@ -20,17 +18,6 @@ public class ContactDetails implements Serializable{
     private String home_number;
     private String email_address;
     
-    @OneToOne
-    private Customer customer;
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public String getCell_number() {
         return cell_number;
     }

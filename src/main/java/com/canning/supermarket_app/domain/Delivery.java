@@ -30,45 +30,72 @@ public class Delivery implements Serializable {
     
     @OneToOne
     private Orders orders;
+    
+    private Delivery(Builder builder) {
+        id= builder.id;
+        delivery_needed = builder.delivery_needed;
+        street_address = builder.street_address;
+        contact_number = builder.contact_number;
+       }
+    
+    public static class Builder {
+        private Long id;
+        private String delivery_needed;
+        private String street_address;
+        private String contact_number;
+        
+        public Builder id(Long value) {
+            id = value;
+            return this;
+        }
+        
+        public Builder delivery_needed(String value) {
+            delivery_needed = value;
+            return this;
+        }
+        
+        public Builder street_address(String value){
+            street_address = value;
+            return this;
+        }
+        
+        public Builder contact_number(String value){
+            contact_number = value;
+            return this;
+        }
+        
+        public Builder Delivery(Delivery delivery){
+            id = delivery.getId();
+            delivery_needed = delivery.getDelivery_needed();
+            street_address = delivery.getStreet_address();
+            contact_number = delivery.getContact_number();
+            
+            return this;
+        }
+        
+            public Delivery build(){
+            return new Delivery(this);
+        }
+    }
 
     public String getDelivery_needed() {
         return delivery_needed;
-    }
-
-    public void setDelivery_needed(String delivery_needed) {
-        this.delivery_needed = delivery_needed;
     }
 
     public String getStreet_address() {
         return street_address;
     }
 
-    public void setStreet_address(String street_address) {
-        this.street_address = street_address;
-    }
-
     public String getContact_number() {
         return contact_number;
-    }
-
-    public void setContact_number(String contact_number) {
-        this.contact_number = contact_number;
     }
 
     public Orders getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

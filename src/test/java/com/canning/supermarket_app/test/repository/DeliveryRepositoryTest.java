@@ -36,10 +36,7 @@ public class DeliveryRepositoryTest {
     @Test
     public void deliveryTest() {
          deliveryRepository = ctx.getBean(DeliveryRepository.class);
-         Delivery delivery = new Delivery();
-         delivery.getDelivery_needed();
-         delivery.getStreet_address();
-         delivery.getContact_number();
+         Delivery delivery = new Delivery.Builder().delivery_needed(null).street_address(null).contact_number(null).build();
          deliveryRepository.save(delivery);   
      }
 

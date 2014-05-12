@@ -36,7 +36,7 @@ public class CustomerRepositoryTest {
     @Test
     public void customerTest() {
          custRepo = ctx.getBean(CustomerRepository.class);
-         Customer customer = new Customer.Builder().customer_Number(null).name(null, null).build();
+         Customer customer = new Customer.Builder().customer_Number(null).build();
          custRepo.save(customer);     
      }
 

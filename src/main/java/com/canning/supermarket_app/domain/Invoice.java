@@ -33,37 +33,60 @@ public class Invoice implements Serializable {
     
     @OneToOne
     private Orders orders;
+    
+    private Invoice(Builder builder) {
+        id= builder.id;
+        invoice_date = builder.invoice_date;
+        total = builder.total;
+       }
+    
+    public static class Builder {
+        private Long id;
+        private Date invoice_date;
+        private long total;
+        
+        public Builder id(Long value) {
+            id = value;
+            return this;
+        }
+        
+        public Builder invoice_date(Date value) {
+            invoice_date = value;
+            return this;
+        }
+        
+        public Builder total(long value){
+            total = value;
+            return this;
+        }
+                
+        public Builder Invoice(Invoice invoice){
+            id = invoice.getId();
+            invoice_date = invoice.getInvoice_date();
+            total = invoice.getTotal();
+                        
+            return this;
+        }
+        
+            public Invoice build(){
+            return new Invoice(this);
+        }
+    }
 
     public Date getInvoice_date() {
         return invoice_date;
-    }
-
-    public void setInvoice_date(Date invoice_date) {
-        this.invoice_date = invoice_date;
     }
 
     public long getTotal() {
         return total;
     }
 
-    public void setTotal(long total) {
-        this.total = total;
-    }
-
     public Orders getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override
