@@ -11,6 +11,7 @@ import com.canning.supermarket_app.domain.Delivery;
 import com.canning.supermarket_app.repository.DeliveryRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -30,20 +31,55 @@ public class DeliveryRepositoryTest {
     public DeliveryRepositoryTest() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    @Test
-    public void deliveryTest() {
+    @Test(priority = 1)
+    public void createDelivery() {
          deliveryRepository = ctx.getBean(DeliveryRepository.class);
-         Delivery delivery = new Delivery.Builder().delivery_needed(null).street_address(null).contact_number(null).build();
-         deliveryRepository.save(delivery);   
+        
+         Delivery delivery = new Delivery.Builder().delivery_needed("Yes").contact_number("021 585 969").build();
+  
+         deliveryRepository.save(delivery);
+         
+         id = delivery.getId();
+         Assert.assertNotNull(delivery);
      }
+    
+    @Test(priority = 2, dependsOnMethods = "createDelivery")
+    public void readDelivery() {
+        deliveryRepository = ctx.getBean(DeliveryRepository.class);
+        Delivery delivery = deliveryRepository.findOne(id);
+        
+        Assert.assertEquals(delivery.getDelivery_needed(), "Yes");
+    }
+    
+     @Test(priority = 3, dependsOnMethods = "createDelivery")
+     private void updateDelivery(){
+        deliveryRepository = ctx.getBean(DeliveryRepository.class);
+        Delivery delivery = deliveryRepository.findOne(id);
+  
+        Delivery updatedDelivery = new Delivery.Builder().Delivery(delivery).delivery_needed("Yes").contact_number("021 585 696").build();
+         
+        deliveryRepository.save(updatedDelivery);
+              
+        Delivery newDelivery = deliveryRepository.findOne(id);
+
+        Assert.assertEquals(newDelivery.getDelivery_needed(), "Yes");
+     }
+     
+    @Test(priority = 4, dependsOnMethods = "createDelivery")
+    private void deleteDelivery(){
+        deliveryRepository = ctx.getBean(DeliveryRepository.class);
+        
+        Delivery delivery = deliveryRepository.findOne(id);
+        deliveryRepository.delete(delivery);
+ 
+        Delivery deletedDelivery = deliveryRepository.findOne(id);
+
+        Assert.assertNull(deletedDelivery);    
+    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
-		
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);	
     }
 
     @AfterClass
@@ -56,5 +92,7 @@ public class DeliveryRepositoryTest {
 
     @AfterMethod
     public void tearDownMethod() throws Exception {
+       /* deliveryRepository = ctx.getBean(DeliveryRepository.class);
+        deliveryRepository.deleteAll();*/
     }
 }

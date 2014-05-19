@@ -6,11 +6,22 @@
 
 package com.canning.supermarket_app.services;
 
+import java.util.List;
+
 /**
  *
  * @author Kevin Canning
  */
-public interface InvoiceService<I, ID>  {
-     
-    public I findAInvoice(ID id);
+public interface Services<S, ID> {
+
+    public S find(ID id);
+
+    public S persist(S entity);
+
+    public S merge(S entity);
+
+    public void remove(S entity);
+
+    public List<S> findAll();
 }
+

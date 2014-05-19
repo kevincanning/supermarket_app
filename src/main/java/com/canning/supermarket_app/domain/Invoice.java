@@ -33,6 +33,9 @@ public class Invoice implements Serializable {
     
     @OneToOne
     private Orders orders;
+
+    public Invoice() {
+    }
     
     private Invoice(Builder builder) {
         id= builder.id;

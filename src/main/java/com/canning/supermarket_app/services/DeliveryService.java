@@ -6,19 +6,13 @@
 
 package com.canning.supermarket_app.services;
 
+import com.canning.supermarket_app.domain.Delivery;
 import java.util.List;
 
 /**
  *
  * @author Kevin Canning
  */
-public interface DeliveryService<D, ID>  {
-    public D findADelivery(ID id);
-
-    public D persist(D entity);
-
-    public D merge(D entity);
-
-    public void remove(D entity);
-    public List<D> getAllDeliveries();
+public interface DeliveryService {
+    public List<Delivery> getAllDelivery();
 }

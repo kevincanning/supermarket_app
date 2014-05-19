@@ -11,6 +11,7 @@ import com.canning.supermarket_app.domain.Item;
 import com.canning.supermarket_app.repository.ItemRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -29,19 +30,52 @@ public class ItemRepositoryTest {
     
     public ItemRepositoryTest() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    @Test
-    public void itemTest() {
+    
+    @Test(priority = 1)
+    public void createItem() {
          itemRepository = ctx.getBean(ItemRepository.class);
-         Item item = new Item();
-         item.getQuantity();
-         item.getPrice();
-         item.getAmount_in_stock();
-         itemRepository.save(item);          
+        
+         Item item = new Item.Builder().code("KET001").amount_in_stock(100).price(250).build();
+
+         itemRepository.save(item);
+         
+         id = item.getId();
+         Assert.assertNotNull(item);         
      }
+    
+    @Test(priority = 2, dependsOnMethods = "createItem")
+    public void readItem() {
+        itemRepository = ctx.getBean(ItemRepository.class);
+        Item item = itemRepository.findOne(id);
+        
+        Assert.assertEquals(item.getCode(), "KET001");
+    }
+    
+     @Test(priority = 3, dependsOnMethods = "createItem")
+     private void updateItem(){
+        itemRepository = ctx.getBean(ItemRepository.class);
+        Item item = itemRepository.findOne(id);
+           
+        Item updatedItem = new Item.Builder().code("KETT001").amount_in_stock(150).build();
+
+        itemRepository.save(updatedItem);
+              
+        Item newItem = itemRepository.findOne(id);
+ 
+        Assert.assertEquals(item.getCode(), "KETT001");
+     }
+     
+     @Test(priority = 4, dependsOnMethods = "updateItem")
+     private void deleteItem(){
+        itemRepository = ctx.getBean(ItemRepository.class);
+    
+        Item item = itemRepository.findOne(id);
+        itemRepository.save(item);
+ 
+        Item deletedItem = itemRepository.findOne(id);
+
+        Assert.assertNull(deletedItem); 
+    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
@@ -58,5 +92,7 @@ public class ItemRepositoryTest {
 
     @AfterMethod
     public void tearDownMethod() throws Exception {
+       /*itemRepository = ctx.getBean(ItemRepository.class);
+        itemRepository.deleteAll();*/
     }
 }

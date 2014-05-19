@@ -30,6 +30,9 @@ public class Delivery implements Serializable {
     
     @OneToOne
     private Orders orders;
+
+    public Delivery() {
+    }
     
     private Delivery(Builder builder) {
         id= builder.id;

@@ -6,20 +6,14 @@
 
 package com.canning.supermarket_app.services;
 
+import com.canning.supermarket_app.domain.Customer;
 import java.util.List;
 
 /**
  *
  * @author Kevin Canning
  */
-public interface CustomerService<C, ID>  {
-    
-    public C findCustomer(ID id);
+public interface CustomerService {
 
-    public C persist(C entity);
-
-    public C merge(C entity);
-
-    public void remove(C entity);
-    public List<C> getAllCustomers();
+    public List<Customer> getAllCustomers();
 }

@@ -41,20 +41,20 @@ public class Customer implements Serializable {
     @OneToMany(orphanRemoval=true, cascade= CascadeType.ALL)
     @JoinColumn(name = "customer_number") 
     private List<CreditCard> creditCard;
-    
+        
     @OneToMany(orphanRemoval=true,cascade= CascadeType.ALL)
     @JoinColumn(name = "order_number")
     private List<Orders> order;
     
         private Customer(Builder builder) {
-        id = builder.id;
-        customer_number = builder.customer_Number;
-        name = builder.name;
-        contactDetails = builder.contactDetails;
-        customerAddress = builder.customerAddress;
-        creditCard = builder.creditCard;
-        order = builder.orders;
-       }
+            id = builder.id;
+            customer_number = builder.customer_Number;
+            name = builder.name;
+            contactDetails = builder.contactDetails;
+            customerAddress = builder.customerAddress;
+            creditCard = builder.creditCard;
+            order = builder.orders;
+        }
     
         public Customer(){
         }
@@ -78,27 +78,22 @@ public class Customer implements Serializable {
             return this;
         }
         
-         public Builder name(String firstname, String lastname) {
-            firstname = name.getFirst_name();
-            lastname = name.getLast_name();
+         public Builder name(Name value) {
+            name = value;
             return this;
         }
          
-        public Builder contactDetails(String cell_number, String home_number, String email_address) {
-            cell_number = contactDetails.getCell_number();
-            home_number = contactDetails.getHome_number();
-            email_address = contactDetails.getEmail_address();
+        public Builder contactDetails(ContactDetails value) {
+            contactDetails = value;
             return this;
         }
-          public Builder customerAddress(String street_address, String postal_address){
-            street_address = customerAddress.getStreet_address();
-            postal_address = customerAddress.getPostal_address();
+          public Builder customerAddress(CustomerAddress value){
+            customerAddress = value;
             return this;           
         }
         
           public Builder creditCard(List<CreditCard> value){         
-              creditCard = value;
-              
+              creditCard = value;              
               return this;
           }
           
@@ -115,13 +110,13 @@ public class Customer implements Serializable {
               customerAddress = customer.getCustomerAddress();
               creditCard = customer.getCreditCard();
               orders = customer.getOrder();
-              return this;              
+              return this;             
           }
           
         public Customer build(){
             return new Customer(this);
         }
-        }
+    }
         
     public String getCustomer_number() {
         return customer_number;
@@ -173,7 +168,6 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "com.canning.supermarket_app.domain.Customer[ id=" + id + " ]";
+        return "First Name: "  + name.getFirst_name() + " >> Last Name: " + name.getLast_name() + " >> Customer Number: " + customer_number;
     }
-    
 }

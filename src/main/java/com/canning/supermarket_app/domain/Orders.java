@@ -21,6 +21,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class Orders implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -40,6 +44,9 @@ public class Orders implements Serializable {
     private Orders(Builder builder) {
         id= builder.id;
         order_number = builder.order_number;
+        order_date = builder.order_date;
+        invoice = builder.invoice;
+        customer = builder.customer;
        }
     
     public static class Builder {
@@ -83,6 +90,10 @@ public class Orders implements Serializable {
             
             return this;
         }
+        
+        public Orders build() {
+            return new Orders(this);
+        }
     }
 
     public Customer getCustomer() {
@@ -103,10 +114,6 @@ public class Orders implements Serializable {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override
