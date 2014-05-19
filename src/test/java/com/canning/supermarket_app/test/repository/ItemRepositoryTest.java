@@ -35,7 +35,7 @@ public class ItemRepositoryTest {
     public void createItem() {
          itemRepository = ctx.getBean(ItemRepository.class);
         
-         Item item = new Item.Builder().code("KET001").amount_in_stock(100).price(250).build();
+         Item item = new Item.Builder().code("code01").amount_in_stock(100).price(250).build();
 
          itemRepository.save(item);
          
@@ -48,7 +48,7 @@ public class ItemRepositoryTest {
         itemRepository = ctx.getBean(ItemRepository.class);
         Item item = itemRepository.findOne(id);
         
-        Assert.assertEquals(item.getCode(), "KET001");
+        Assert.assertEquals(item.getCode(), "code01");
     }
     
      @Test(priority = 3, dependsOnMethods = "createItem")
@@ -56,13 +56,13 @@ public class ItemRepositoryTest {
         itemRepository = ctx.getBean(ItemRepository.class);
         Item item = itemRepository.findOne(id);
            
-        Item updatedItem = new Item.Builder().code("KETT001").amount_in_stock(150).build();
+        Item updatedItem = new Item.Builder().Item(item).code("code02").amount_in_stock(150).build();
 
         itemRepository.save(updatedItem);
               
         Item newItem = itemRepository.findOne(id);
  
-        Assert.assertEquals(item.getCode(), "KETT001");
+        Assert.assertEquals(newItem.getCode(), "code02");
      }
      
      @Test(priority = 4, dependsOnMethods = "updateItem")
@@ -71,7 +71,7 @@ public class ItemRepositoryTest {
     
         Item item = itemRepository.findOne(id);
         itemRepository.save(item);
- 
+         
         Item deletedItem = itemRepository.findOne(id);
 
         Assert.assertNull(deletedItem); 

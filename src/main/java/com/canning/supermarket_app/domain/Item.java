@@ -70,9 +70,16 @@ public class Item implements Serializable {
             return this;
         }
         
-        public Builder orders(String order_number, String order_date){
-            order_number = orders.getOrder_number();
-            order_date = orders.getOrder_date();
+        public Builder orders(Orders value){
+            orders = value;
+            return this;
+        }
+        
+        public Builder Item(Item item) {
+            id = item.id;
+            price = item.price;
+            code = item.code;
+            amount_in_stock = item.amount_in_stock;
             return this;
         }
         
