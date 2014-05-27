@@ -7,12 +7,10 @@
 package com.canning.supermarket_app.services;
 
 import com.canning.supermarket_app.domain.Delivery;
-import java.util.List;
 
 /**
  *
  * @author Kevin Canning
  */
-public interface DeliveryService {
-    public List<Delivery> getAllDelivery();
+public interface DeliveryService extends Services<Delivery, Long> {
 }

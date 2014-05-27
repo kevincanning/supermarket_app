@@ -6,13 +6,11 @@
 
 package com.canning.supermarket_app.services;
 
-import java.util.List;
-
+import com.canning.supermarket_app.domain.Orders;
 
 /**
  *
  * @author Kevin Canning
  */
-public interface OrderService<O, ID>  {
-     public List<O> getAllOrders();
+public interface OrderService extends Services<Orders, Long> {
 }

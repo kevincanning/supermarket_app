@@ -6,6 +6,7 @@
 
 package com.canning.supermarket_app.services.Impl;
 
+import com.canning.supermarket_app.domain.Orders;
 import com.canning.supermarket_app.repository.OrderRepository;
 import com.canning.supermarket_app.services.OrderService;
 import java.util.List;
@@ -20,9 +21,30 @@ public class FindAOrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     @Override
-    public List getAllOrders() {
+    public Orders find(Long id) {
+        return orderRepository.findOne(id);
+    }
+
+    @Override
+    public Orders persist(Orders entity) {
+        return orderRepository.save(entity);
+    }
+
+    @Override
+    public Orders merge(Orders entity) {
+           if (entity.getId()!=null) {
+            return orderRepository.save(entity);
+        }
+        return null;
+    }
+
+    @Override
+    public void remove(Orders entity) {
+        orderRepository.delete(entity);
+    }
+
+    @Override
+    public List<Orders> findAll() {
         return orderRepository.findAll();
     }
-    
-    
 }

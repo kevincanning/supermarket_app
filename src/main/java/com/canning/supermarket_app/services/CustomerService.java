@@ -7,13 +7,11 @@
 package com.canning.supermarket_app.services;
 
 import com.canning.supermarket_app.domain.Customer;
-import java.util.List;
 
 /**
  *
  * @author Kevin Canning
  */
-public interface CustomerService {
+public interface CustomerService extends Services<Customer, Long> {
 
-    public List<Customer> getAllCustomers();
 }

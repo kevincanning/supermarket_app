@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.canning.supermarket_app.app.conf;
+package com.canning.supermarket_app.conf;
 
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
- * @author Kevin
+ * @author Kevin Canning
  */
 @Configuration
 @ComponentScan("com.canning.supermarket_app")
@@ -33,7 +33,7 @@ public class ConnectionConfig {
     public DataSource dataSource() {
         BasicDataSource ds = new org.apache.commons.dbcp.BasicDataSource();
         ds.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
-        ds.setUrl("jdbc:derby://localhost:1527/sample");
+        ds.setUrl("jdbc:derby://localhost:1527/supermarket");
         ds.setUsername("app");
         ds.setPassword("app");
         return ds;
@@ -41,7 +41,7 @@ public class ConnectionConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-        DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);

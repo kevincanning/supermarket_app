@@ -22,9 +22,32 @@ import org.springframework.stereotype.Service;
 public class FindCustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
-   
+
     @Override
-    public List<Customer> getAllCustomers() {
+    public Customer find(Long id) {
+        return customerRepository.findOne(id);
+    }
+
+    @Override
+    public Customer persist(Customer entity) {
+        return customerRepository.save(entity);
+    }
+
+    @Override
+    public Customer merge(Customer entity) {
+           if (entity.getId()!=null) {
+            return customerRepository.save(entity);
+        }
+        return null;
+    }
+
+    @Override
+    public void remove(Customer entity) {
+        customerRepository.delete(entity);
+    }
+
+    @Override
+    public List<Customer> findAll() {
         return customerRepository.findAll();
-    } 
+    }
 }

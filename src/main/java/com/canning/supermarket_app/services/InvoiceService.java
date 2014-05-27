@@ -6,11 +6,11 @@
 
 package com.canning.supermarket_app.services;
 
+import com.canning.supermarket_app.domain.Invoice;
+
 /**
  *
  * @author Kevin Canning
  */
-public interface InvoiceService<I, ID>  {
-     
-    public I findAInvoice(ID id);
+public interface InvoiceService  extends Services<Invoice, Long> {
 }

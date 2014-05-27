@@ -21,9 +21,33 @@ import org.springframework.stereotype.Service;
 public class FindDeliveryServiceImpl implements DeliveryService {
     @Autowired
     private DeliveryRepository deliveryRepository;
-    
+
     @Override
-    public List<Delivery> getAllDelivery() {
+    public Delivery find(Long id) {
+        return deliveryRepository.findOne(id);
+    }
+
+    @Override
+    public Delivery persist(Delivery entity) {
+        return deliveryRepository.save(entity);
+    }
+
+    @Override
+    public Delivery merge(Delivery entity) {
+        if (entity.getId()!=null) {
+            return deliveryRepository.save(entity);
+        }
+        return null;
+    }
+
+    @Override
+    public void remove(Delivery entity) {
+        deliveryRepository.delete(entity);
+    }
+
+    @Override
+    public List<Delivery> findAll() {
         return deliveryRepository.findAll();
     }
+    
 }
